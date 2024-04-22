@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>별 그리기</title>
+</head>
+<body>
+    <canvas id="myCanvas" width="400" height="400"></canvas>
+
+    <script>
+        var canvas = document.getElementById('myCanvas');
+        var context = canvas.getContext('2d');
+
+        // 별을 그리는 함수
+        function drawStar(x, y, radius, spikes, color) {
+            var rot = (Math.PI / 2) * 3;
+            var x = x;
+            var y = y;
+            var step = Math.PI / spikes;
+
+            context.beginPath();
+            context.moveTo(x, y - radius);
+            for (i = 0; i < spikes; i++) {
+                x = x + Math.cos(rot) * radius;
+                y = y + Math.sin(rot) * radius;
+                context.lineTo(x, y);
+                rot += step;
+
+                x = x + Math.cos(rot) * (radius / 2);
+                y = y + Math.sin(rot) * (radius / 2);
+                context.lineTo(x, y);
+                rot += step;
+            }
+            context.lineTo(x, y - radius);
+            context.closePath();
+            context.fillStyle = color; // 별의 색상을 지정할 수 있습니다.
+            context.fill();
+        }
+
+        // Canvas에 별을 그립니다.
+        drawStar(200, 200, 50, 5, "yellow");
+    </script>
+</body>
+</html>

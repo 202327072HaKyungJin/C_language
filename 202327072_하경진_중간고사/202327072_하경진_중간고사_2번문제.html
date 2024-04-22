@@ -1,0 +1,10 @@
+var canvas = document.getElementById('myCanvas');
+var context = canvas.getContext('2d');
+
+// Canvas의 중앙을 원점으로 설정
+context.translate(canvas.width / 2, canvas.height / 2);
+
+// y축을 뒤집어서 아래로 증가하도록 설정
+context.scale(1, -1);
+
+// 이제 (0, 0)은 Canvas의 중앙이 되고, x축은 오른쪽으로 증가하고 y축은 아래로 증가합니다.
